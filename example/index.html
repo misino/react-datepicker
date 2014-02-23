@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datepicker Example</title>
+    <link type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link type="text/css" href="../src/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <p>
+        <h1>Standalone datepicker</h1>
+        <div id="datepicker"></div>
+    </p>
+    <p>
+        <h1>Input element which is customized to get date from datepicker</h1>
+        <div id="datepicker-input"></div>
+    </p>
+
+</div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.9.0/JSXTransformer.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.9.0/react-with-addons.min.js"></script>
+    <script type="text/jsx" src="../src/datepicker_jsx.js"></script>
+    <script type="text/jsx">
+        /** @jsx React.DOM */
+        React.renderComponent(
+            <DatePicker date={new Date()} />,
+            document.getElementById('datepicker')
+        );
+
+        React.renderComponent(
+            <DatePickerInput date={new Date()} />,
+            document.getElementById('datepicker-input')
+        );
+    </script>
+</body>
+</html>
