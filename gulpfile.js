@@ -57,7 +57,7 @@
       fileName: 'datepicker.min.js',
       compilerPath: paths.compiler,
       compilerFlags: {
-        closure_entry_point: 'misino.ui.datepicker.DatePicker',
+        closure_entry_point: 'misino.ui.datepicker.DatePickerInput',
         externs: paths.externs,
         warning_level: 'QUIET'
       }
