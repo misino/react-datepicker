@@ -4,7 +4,11 @@ goog.provide('misino.ui.datepicker.DayPicker');
 goog.require('misino.utils.DateUtils');
 goog.require('misino.ui.datepicker.Day');
 
-var DayPicker = React.createClass({
+var DayPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */{
+    /**
+     *
+     * @param {Date} date
+     */
     selectDay: function(date) {
         this.props.selectDate(date);
     },

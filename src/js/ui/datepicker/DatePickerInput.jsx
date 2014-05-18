@@ -3,10 +3,18 @@
 goog.provide('misino.ui.datepicker.DatePickerInput');
 goog.require('misino.ui.datepicker.DatePicker');
 
-var DatePickerInput = React.createClass({
+var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototype} */{
+    /**
+     *
+     * @returns {{date: Date}}
+     */
     getDefaultProps: function() {
         return({date:new Date()});
     },
+    /**
+     *
+     * @returns {{show: boolean}}
+     */
     getInitialState: function() {
         return {show:false};
     },
@@ -16,6 +24,10 @@ var DatePickerInput = React.createClass({
     hideDatePicker: function() {
         this.setState({show:false});
     },
+    /**
+     *
+     * @param {Date} date
+     */
     onChangeDate: function(date) {
         this.props.date = date;
         this.setState({show:false});

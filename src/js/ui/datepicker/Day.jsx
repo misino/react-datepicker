@@ -2,11 +2,19 @@
 
 goog.provide('misino.ui.datepicker.Day');
 
-var Day = React.createClass({
+var Day = React.createClass(/** @lends {React.ReactComponent.prototype} */{
+    /**
+     *
+     * @param e
+     */
     handleClick: function(e) {
         e.preventDefault();
         this.props.changeDate(this.props.date);
     },
+    /**
+     *
+     * @returns {{selected: boolean}}
+     */
     getDefaultProps: function() {
         return {selected:false};
     },

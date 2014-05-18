@@ -2,7 +2,7 @@
 
 goog.provide('misino.ui.numberpicker.NumberPicker');
 
-var NumberPicker = React.createClass({
+var NumberPicker = React.createClass(/** @lends {React.ReactComponent.prototype} */{
     getDefaultProps: function() {
         return {number:0};
     },

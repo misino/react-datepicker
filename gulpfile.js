@@ -59,7 +59,7 @@
       compilerFlags: {
         closure_entry_point: 'misino.ui.datepicker.DatePickerInput',
         externs: paths.externs,
-        warning_level: 'QUIET'
+        warning_level: 'VERBOSE'
       }
     });
   });
