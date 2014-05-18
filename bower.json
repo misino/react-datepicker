@@ -1,0 +1,8 @@
+{
+  "name": "react-datepicker",
+  "version": "0.2.0",
+  "private": true,
+  "dependencies": {
+    "este-library": "git://github.com/steida/este-library.git"
+  }
+}

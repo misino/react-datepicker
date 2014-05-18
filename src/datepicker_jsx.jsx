@@ -29,7 +29,7 @@ var DatePickerUtils = {
     }
 }
 
-var Day = React.createClass({displayName: 'Day',
+var Day = React.createClass({
     handleClick: function(e) {
         e.preventDefault();
         this.props.changeDate(this.props.date);
@@ -41,14 +41,14 @@ var Day = React.createClass({displayName: 'Day',
         var className="day week-"+this.props.week+" dayInWeek-"+this.props.date.getDay();
         className += (this.props.selected?' selected':'');
         return (
-            React.DOM.div( {className:className}, 
-                React.DOM.a( {href:"#", onClick:this.handleClick}, this.props.date.getDate())
-            )
+            <div className={className}>
+                <a href="#" onClick={this.handleClick}>{this.props.date.getDate()}</a>
+            </div>
             );
     }
 });
 
-var DayPicker = React.createClass({displayName: 'DayPicker',
+var DayPicker = React.createClass({
     selectDay: function(date) {
         this.props.selectDate(date);
     },
@@ -61,7 +61,7 @@ var DayPicker = React.createClass({displayName: 'DayPicker',
 
         var previousMonthDays = daysArray.map(function(day){
             var thisDate = DatePickerUtils.createNewDayMonth(day, date.getMonth()-1, date.getTime());
-            return Day( {date:thisDate, week:1, changeDate:this.selectDay} )
+            return <Day date={thisDate} week={1} changeDate={this.selectDay} />
         }.bind(this));
 
         daysArray = DatePickerUtils.getArrayByBoundary(1, DatePickerUtils.daysInMonthCount(date.getMonth(), date.getFullYear()));
@@ -73,33 +73,33 @@ var DayPicker = React.createClass({displayName: 'DayPicker',
             if(date.getMonth()==this.props.selectedDate.getMonth() && date.getFullYear()==this.props.selectedDate.getFullYear()) {
                 selected = (day==this.props.selectedDate.getDate());
             }
-            return Day( {selected:selected, date:thisDate, week:weekNumber, changeDate:this.selectDay} )
+            return <Day selected={selected} date={thisDate} week={weekNumber} changeDate={this.selectDay} />
         }.bind(this));
 
         daysArray = DatePickerUtils.getArrayByBoundary(1, 42- previousMonthDays.length - actualMonthDays.length);
         var nextMonthDays = daysArray.map(function(day){
             var thisDate = DatePickerUtils.createNewDayMonth(day, date.getMonth()+1, date.getTime()),
                 weekNumber = Math.ceil((previousMonthDays.length + actualMonthDays.length + day) / 7);
-            return Day( {date:thisDate, week:weekNumber, changeDate:this.selectDay} )
+            return <Day date={thisDate} week={weekNumber} changeDate={this.selectDay} />
         }.bind(this));
 
         return (
-            React.DOM.div( {className:"datepicker-dates"}, 
-                React.DOM.div( {className:"out"}, 
-                previousMonthDays
-                ),
-                React.DOM.div(null, 
-                actualMonthDays
-                ),
-                React.DOM.div( {className:"out"}, 
-                nextMonthDays
-                )
-            )
+            <div className="datepicker-dates">
+                <div className="out">
+                {previousMonthDays}
+                </div>
+                <div>
+                {actualMonthDays}
+                </div>
+                <div className="out">
+                {nextMonthDays}
+                </div>
+            </div>
             );
     }
 });
 
-var NumberPicker = React.createClass({displayName: 'NumberPicker',
+var NumberPicker = React.createClass({
     getDefaultProps: function() {
         return {number:0};
     },
@@ -109,16 +109,16 @@ var NumberPicker = React.createClass({displayName: 'NumberPicker',
 
     render: function() {
         return (
-            React.DOM.div( {className:"numberpicker"}, 
-                React.DOM.a( {onClick:this.changeNumber, 'data-number':this.props.number-1, className:"btn btn-xs btn-default"}, "<<"),
-                React.DOM.span( {className:"btn btn-xs"}, this.props.number),
-                React.DOM.a( {onClick:this.changeNumber, 'data-number':this.props.number+1, className:"btn btn-xs btn-default"}, ">>")
-            )
+            <div className={"numberpicker"}>
+                <a onClick={this.changeNumber} data-number={this.props.number-1} className={"btn btn-xs btn-default"}>&lt;&lt;</a>
+                <span className="btn btn-xs">{this.props.number}</span>
+                <a onClick={this.changeNumber} data-number={this.props.number+1} className={"btn btn-xs btn-default"}>&gt;&gt;</a>
+            </div>
             )
     }
 });
 
-var DatePicker = React.createClass({displayName: 'DatePicker',
+var DatePicker = React.createClass({
     onChangeVisibleDate: function(date) {
         this.setState({visibleDate:date});
     },
@@ -151,19 +151,19 @@ var DatePicker = React.createClass({displayName: 'DatePicker',
     render: function () {
         var style = {display:(this.props.show?'block':'none')};
         return (
-            React.DOM.div( {className:"datepicker", style:style}, 
-                React.DOM.div( {className:"datepicker-container"}, 
-                    NumberPicker( {number:this.state.visibleDate.getFullYear(), onChangeNumber:this.changeYear} ),
-                    NumberPicker( {number:this.state.visibleDate.getMonth()+1, onChangeNumber:this.changeMonth} ),
+            <div className="datepicker" style={style}>
+                <div className="datepicker-container">
+                    <NumberPicker number={this.state.visibleDate.getFullYear()} onChangeNumber={this.changeYear} />
+                    <NumberPicker number={this.state.visibleDate.getMonth()+1} onChangeNumber={this.changeMonth} />
 
-                    DayPicker( {date:this.state.visibleDate, selectedDate:this.props.selectedDate, changeDate:this.onChangeVisibleDate, selectDate:this.onChangeSelectedDate} )
-                )
-            )
+                    <DayPicker date={this.state.visibleDate} selectedDate={this.props.selectedDate} changeDate={this.onChangeVisibleDate} selectDate={this.onChangeSelectedDate} />
+                </div>
+            </div>
             );
     }
 });
 
-var DatePickerInput = React.createClass({displayName: 'DatePickerInput',
+var DatePickerInput = React.createClass({
     getDefaultProps: function() {
         return({date:new Date()});
     },
@@ -184,13 +184,13 @@ var DatePickerInput = React.createClass({displayName: 'DatePickerInput',
         var style={position:'fixed', top:0,left:0, width:'100%', height:'100%', display:(this.state.show?'block':'none')};
 
         return (
-            React.DOM.div(null, 
-                React.DOM.div( {style:style, onClick:this.hideDatePicker}),
-                React.DOM.div( {className:"datepicker-wrapper"}, 
-                    DatePicker( {selectedDate:this.props.date, show:this.state.show, onChangeDate:this.onChangeDate}  )
-                ),
-                React.DOM.input( {type:"text", onFocus:this.showDatePicker, value:this.props.date} )
-            )
+            <div>
+                <div style={style} onClick={this.hideDatePicker}></div>
+                <div className="datepicker-wrapper">
+                    <DatePicker selectedDate={this.props.date} show={this.state.show} onChangeDate={this.onChangeDate}  />
+                </div>
+                <input type="text" onFocus={this.showDatePicker} value={this.props.date} />
+            </div>
             );
     }
 });

@@ -1,0 +1,28 @@
+{
+  "name": "react-datepicker",
+  "version": "0.2.0",
+  "description": "",
+  "author": "Michal Biros <birosh@gmail.com>",
+  "keywords": [
+    "React",
+    "Datepicker"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/misino/react-datepicker.git"
+  },
+  "dependencies": {
+    "react": "^0.10.0",
+    "gulp": "^3.6.0"
+  },
+  "devDependencies": {
+    "gulp-este": "^0.5.2",
+    "run-sequence": "^0.3.6"
+  },
+  "scripts": {
+    "test": "gulp build"
+  },
+  "license": "MIT",
+  "subdomain": "react-datepicker"
+}
