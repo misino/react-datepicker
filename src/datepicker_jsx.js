@@ -35,16 +35,10 @@ var Day = React.createClass({
         return {selected:false};
     },
     render: function() {
-        var cx = React.addons.classSet;
-        var c = {
-            'day': true,
-            selected:this.props.selected
-        }
-        c['week-'+this.props.week]=true;
-        c["dayInWeek-"+this.props.date.getDay()]=true;
-
+        var className="day week-"+this.props.week+" dayInWeek-"+this.props.date.getDay();
+        className += (this.props.selected?' selected':'');
         return (
-            <div className={cx(c)}>
+            <div className={className}>
                 <a href="#" onClick={this.handleClick}>{this.props.date.getDate()}</a>
             </div>
             );
