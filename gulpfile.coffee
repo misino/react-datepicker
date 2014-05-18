@@ -58,7 +58,7 @@ gulp.task 'concat-deps', ->
   este.concatDeps()
 
 gulp.task 'compile-datepicker', ->
-  este.compile paths.js, 'build',
+  este.compile paths.js, 'src/build',
     fileName: 'datepicker.min.js'
     compilerPath: paths.compiler
     compilerFlags:
@@ -68,7 +68,7 @@ gulp.task 'compile-datepicker', ->
 
 gulp.task 'concat-all', ->
   este.concatAll
-    'build/react-datepicker-thirdparty.js': paths.thirdParty
+    'src/build/react-datepicker-thirdparty.js': paths.thirdParty
 
 
 gulp.task 'js', (done) ->

@@ -53,7 +53,7 @@
   });
 
   gulp.task('compile-datepicker', function() {
-    return este.compile(paths.js, 'build', {
+    return este.compile(paths.js, 'src/build', {
       fileName: 'datepicker.min.js',
       compilerPath: paths.compiler,
       compilerFlags: {
@@ -66,7 +66,7 @@
 
   gulp.task('concat-all', function() {
     return este.concatAll({
-      'build/react-datepicker-thirdparty.js': paths.thirdParty
+      'src/build/react-datepicker-thirdparty.js': paths.thirdParty
     });
   });
 
