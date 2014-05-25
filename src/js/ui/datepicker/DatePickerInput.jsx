@@ -9,7 +9,9 @@ var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototy
      * @returns {{date: Date}}
      */
     getDefaultProps: function() {
-        return({'date':new Date()});
+        return({'date':new Date(), 'beforeUpdate': function(date) {
+            return date;
+        }});
     },
     /**
      *
@@ -41,7 +43,7 @@ var DatePickerInput = React.createClass(/** @lends {React.ReactComponent.prototy
                 <div className="datepicker-wrapper">
                 {DatePicker( {'date':this.props['date'], 'show':this.state.show, 'onChangeDate':this.onChangeDate})}
                 </div>
-                <input type="text" onFocus={this.showDatePicker} value={this.props['date']} />
+                <input type="text" onFocus={this.showDatePicker} value={this.props['beforeUpdate'](this.props['date'])} />
             </div>
             );
     }

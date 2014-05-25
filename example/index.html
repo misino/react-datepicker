@@ -28,8 +28,20 @@
             document.getElementById('datepicker')
         );
 
+        /**
+         * @param {Date} date
+         * @returns {Date|string|number}
+         */
+        var formatDate = function(date) {
+            var output = '';
+            output+=date.getMonth()+1+'/';
+            output+=date.getDate()+'/';
+            output+=date.getFullYear();
+            return output;
+        }
+
         React.renderComponent(
-            <DatePickerInput date={new Date(2012, 0, 4)} />,
+            <DatePickerInput date={new Date(2012, 0, 4)} beforeUpdate={formatDate} />,
             document.getElementById('datepicker-input')
         );
     </script>

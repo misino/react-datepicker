@@ -16,8 +16,10 @@ var callback = function(date) {
 This library contains own datepicker integration with input element.
 All parameters are optional.
 Default: date = new Date()
+
 ```
-<DatepickerInput date={new Date()} />
+var returnDate = function(date) {return date}; // this callback will be called before input field update. You can use it for example for date formatting as is shown in example/index.html
+<DatepickerInput date={new Date()} beforeUpdate={returnDate} />
 ```
 
 minified javascript and css are located in directory `src/build`
