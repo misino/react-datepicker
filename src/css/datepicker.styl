@@ -1,12 +1,13 @@
 div.datepicker-dates {
-  position: relative
-  width:156px
-  height:100%
-
+  position: relative;
+  width: 156px;
+  height: 100%;
+  margin-top: 0.5em;
   div.day {
-    position: absolute;
+    position:absolute;
   }
 }
+
 .dayInWeek-1 {
   left:0;
 }
@@ -48,49 +49,40 @@ div.datepicker-dates {
 }
 .datepicker {
   position:relative;
-  height: 250px;
+  height: 220px;
   width: 170px;
   z-index: 10;
-
-  .out .day {
-    background-color: #e0e0e0;
-  }
   .day {
     a {
       width:20px;
       display: block;
-      border: 1px solid #000;
       text-align: center;
-
-      &:hover {
-        text-decoration: none;
-        background-color: #d3d3d3;
-      }
+      color: #222;
+      text-decoration:none;
+      padding: 2px;
     }
-    &.selected {
-      background-color: #d3d3d3;
+    a:hover {
+      background-color: #eaeaea;
     }
   }
-  .datapicker-year {
-    text-align: center;
-  }
-  .datapicker-month {
-    text-align: center;
+  .out .day a {
+    color: #bcbcbc;
   }
   .numberpicker {
     margin:0.2em;
     text-align: center;
   }
+  .day.selected {
+    background-color: #c9c9c9;
+  }
 }
 .datepicker-container {
   position:relative;
-  border:1px solid #000;
+  border:1px solid #979797;
   padding:0.5em;
   background-color: #fff;
   height: 220px;
 }
-
-
 .datepicker-wrapper {
   position:absolute;
 }
