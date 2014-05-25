@@ -18,15 +18,15 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
      */
     onChangeSelectedDate: function(date) {
         this.setState({visibleDate:date});
-        this.props.onChangeDate(date);
+        this.props['onChangeDate'](date);
     },
     /**
      *
-     * @returns {{selectedDate: Date, show: boolean, onChangeDate: onChangeDate}}
+     * @returns {{date: Date, show: boolean, onChangeDate: Function}}
      */
     getDefaultProps: function() {
-        return({selectedDate:new Date(), show:true, onChangeDate: function(date) {
-            console.log(date);
+        return({'date':new Date(), 'show':true, 'onChangeDate': function(date) {
+            console.log('You have selected new date' + date);
         }});
     },
     /**
@@ -35,7 +35,7 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
      */
     getInitialState: function() {
         var date = new Date();
-        date.setTime(this.props.selectedDate.getTime());
+        date.setTime(this.props['date'].getTime());
         return({visibleDate:date});
     },
     /**
@@ -59,14 +59,14 @@ var DatePicker = React.createClass(/** @lends {React.ReactComponent.prototype} *
         this.setState({visibleDate:date});
     },
     render: function () {
-        var style = {display:(this.props.show?'block':'none')};
+        var style = {display:(this.props['show']?'block':'none')};
         return (
             <div className="datepicker" style={style}>
                 <div className="datepicker-container">
                     <NumberPicker number={this.state.visibleDate.getFullYear()} onChangeNumber={this.changeYear} />
                     <NumberPicker number={this.state.visibleDate.getMonth()+1} onChangeNumber={this.changeMonth} />
 
-                    <DayPicker date={this.state.visibleDate} selectedDate={this.props.selectedDate} changeDate={this.onChangeVisibleDate} selectDate={this.onChangeSelectedDate} />
+                    <DayPicker date={this.state.visibleDate} selectedDate={this.props['date']} changeDate={this.onChangeVisibleDate} selectDate={this.onChangeSelectedDate} />
                 </div>
             </div>
             );
