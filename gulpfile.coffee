@@ -65,6 +65,7 @@ gulp.task 'compile-datepicker', ->
       closure_entry_point: 'misino.ui.datepicker.DatePickerInput'
       externs: paths.externs
       warning_level: 'VERBOSE'
+      compilation_level: 'ADVANCED_OPTIMIZATIONS'
 
 gulp.task 'concat-all', ->
   este.concatAll
