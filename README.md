@@ -4,22 +4,23 @@ Datepicker component for applications based on Facebook React library.
 
 ##Usage
 Standalone datepicker element. It can perform action if date is selected. Parameters are optional.
+For best functionality, *DatePicker* needs to be wrapped in component which sets new date on *onChangeDate* event. An example of such wrapper component could be *DatepickerInput*.
 
 ```
 var callback = function(date) {
   alert('new selected date is: '+date);
 }
 
-<Datepicker date={new Date()} onChangeDate={callback} show={true} />
+<DatePicker date={new Date()} onChangeDate={callback} show={true} />
 ```
 
 This library contains own datepicker integration with input element.
 All parameters are optional.
-Default: date = new Date()
+Parameter *beforeUpdate* has to be function which returns string. This string will be set as value of input field before date change.
 
 ```
 var returnDate = function(date) {return date}; // this callback will be called before input field update. You can use it for example for date formatting as is shown in example/index.html
-<DatepickerInput date={new Date()} beforeUpdate={returnDate} />
+<DatePickerInput date={new Date()} beforeUpdate={returnDate} />
 ```
 
 minified javascript and css are located in directory `src/build`
