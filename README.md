@@ -1,8 +1,8 @@
-#react-datepicker
+# react-datepicker
 
 Datepicker component for applications based on Facebook React library.
 
-##Usage
+## Usage
 Standalone datepicker element. It can perform action if date is selected. Parameters are optional.
 For best functionality, *DatePicker* needs to be wrapped in component which sets new date on *onChangeDate* event. An example of such wrapper component could be *DatepickerInput*.
 
@@ -25,7 +25,7 @@ var returnDate = function(date) {return date}; // this callback will be called b
 
 minified javascript and css are located in directory `src/build`
 
-###Development
+### Development
 If you want to make changes in code and use benefits of compiling code, you need to have gulp and bower installed.
 
 ```
